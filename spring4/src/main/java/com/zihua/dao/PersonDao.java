@@ -44,8 +44,10 @@ public class PersonDao {
     }
 
     public Person getPersonById(String id) {
-        return (Person) this.getSession().createQuery("from Person where id = ?")
+        Person a= (Person) this.getSession().createQuery("from Person where id = ?")
                 .setParameter(0, id).uniqueResult();
+        System.out.print(a);
+        return a;
     }
 
 }

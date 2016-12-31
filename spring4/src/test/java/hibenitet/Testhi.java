@@ -82,7 +82,7 @@ public class Testhi {
     @Test
     public void test5(){
         //SimpleDateFormat a=new SimpleDateFormat("yyyy-mm-dd");
-        Students s=new Students(1,"NIKE",new Date(),"18777859598","男","cs");
+        Students s=new Students(11,"NIKE",new Date(),"18777859598","男","cs");
         session.save(s);
 
     }
