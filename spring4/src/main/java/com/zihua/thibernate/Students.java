@@ -1,35 +1,74 @@
 package com.zihua.thibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerators;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by zihua on 16-12-26.
  */
 @Entity
-public class Students {
+@Table(name = "student_t", schema = "spring_user")
+public class Students implements Serializable {
     private int id;
-    private String name;
     private Date brithday;
     private String phone;
     private String sex;
     private String major;
+    private transient int non;
+    private Address address;
 
-    public Students(){
+    private IDCard card;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "pid",unique = true)
+    public IDCard getCard() {
+        return card;
+    }
+
+    public void setCard(IDCard card) {
+        this.card = card;
+    }
+
+    @Transient
+    public int getNon() {
+        return non;
+    }
+
+
+    public void setNon(int non) {
+        this.non = non;
+    }
+
+
+    @EmbeddedId
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+
+    public Students() {
 
     }
 
-    public Students(int id, String name, Date brithday, String phone, String sex, String major) {
+    public Students(int id, Date brithday, String phone,
+                    String sex, String major, Address address) {
         this.id = id;
-        this.name = name;
         this.brithday = brithday;
         this.phone = phone;
         this.sex = sex;
         this.major = major;
+        this.address = address;
     }
 
-    @Id
+
+    @GeneratedValue
     public int getId() {
         return id;
     }
@@ -38,13 +77,6 @@ public class Students {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Date getBrithday() {
         return brithday;

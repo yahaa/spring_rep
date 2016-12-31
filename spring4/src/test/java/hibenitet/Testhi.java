@@ -1,5 +1,6 @@
 package hibenitet;
 
+import com.zihua.thibernate.Address;
 import com.zihua.thibernate.Boss;
 import com.zihua.thibernate.Employee;
 import com.zihua.thibernate.Students;
@@ -82,14 +83,13 @@ public class Testhi {
     @Test
     public void test5(){
         //SimpleDateFormat a=new SimpleDateFormat("yyyy-mm-dd");
-        Students s=new Students(11,"NIKE",new Date(),"18777859598","男","cs");
-        session.save(s);
+//        Address address=new Address("上海大学","校内五号楼");
+//        Students s=new Students(11,new Date(),"18777859598","男","cs",address);
+//        session.save(s);
 
     }
 
-    @Test
-    public void test6(){
-
-
-    }
 }
+
+
+

@@ -20,12 +20,13 @@
         <!-- 2.2 格式化sql -->
         <property name="hibernate.format_sql">true</property>
         <!-- 2.3 自动建表  -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="current_session_context_class">thread</property><!--配置给getcurrentsession-->
 
         <!-- 3. 加载所有映射 -->
-        <mapping resource="hibernate/Employee.hbm.xml"/>
+        <!--mapping resource="hibernate/Employee.hbm.xml"/-->
         <mapping class="com.zihua.thibernate.Students"/>
-        <mapping resource="hibernate/Boss.hbm.xml"/>
+        <!--mapping resource="hibernate/Boss.hbm.xml"/-->
+        <mapping class="com.zihua.thibernate.IDCard"/>
     </session-factory>
 </hibernate-configuration>
