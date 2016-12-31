@@ -1,9 +1,6 @@
 package hibenitet;
 
-import com.zihua.thibernate.Address;
-import com.zihua.thibernate.Boss;
-import com.zihua.thibernate.Employee;
-import com.zihua.thibernate.Students;
+import com.zihua.thibernate.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -81,11 +78,16 @@ public class Testhi {
     }
 
     @Test
-    public void test5(){
+    public void test5() {
+
+
         //SimpleDateFormat a=new SimpleDateFormat("yyyy-mm-dd");
-//        Address address=new Address("上海大学","校内五号楼");
-//        Students s=new Students(11,new Date(),"18777859598","男","cs",address);
-//        session.save(s);
+        IDCard idcard = new IDCard("子华", "555556666677777");
+        Address address = new Address("上海大学", "校内五号楼");
+        Students s = new Students(1, new Date(), "18777859598",
+                "男", "cs", 10, address, idcard);
+        session.save(idcard);
+        session.save(s);
 
     }
 

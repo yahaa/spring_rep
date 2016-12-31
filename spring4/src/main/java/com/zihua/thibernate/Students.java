@@ -22,8 +22,10 @@ public class Students implements Serializable {
 
     private IDCard card;
 
+
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pid",unique = true)
+    @JoinColumn(name = "pid", unique = true)
     public IDCard getCard() {
         return card;
     }
@@ -57,16 +59,17 @@ public class Students implements Serializable {
 
     }
 
-    public Students(int id, Date brithday, String phone,
-                    String sex, String major, Address address) {
+    public Students(int id, Date brithday, String phone, String sex, String major,
+                    int non, Address address, IDCard card) {
         this.id = id;
         this.brithday = brithday;
         this.phone = phone;
         this.sex = sex;
         this.major = major;
+        this.non = non;
         this.address = address;
+        this.card = card;
     }
-
 
     @GeneratedValue
     public int getId() {
