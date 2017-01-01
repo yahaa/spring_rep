@@ -23,12 +23,14 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="current_session_context_class">thread</property><!--配置给getcurrentsession-->
 
-        <!-- 3. 加载所有映射 -->
-        <!--mapping resource="hibernate/Employee.hbm.xml"/-->
-        <mapping class="com.zihua.thibernate.one_to_one.Students"/>
-        <!--mapping resource="hibernate/Boss.hbm.xml"/-->
-        <mapping class="com.zihua.thibernate.one_to_one.IDCard"/>
-        <mapping class="com.zihua.thibernate.many_to_one.ClassRoom"/>
-        <mapping class="com.zihua.thibernate.many_to_one.Students"/>
+         <!--3. 加载所有映射 -->
+        <!--<mapping resource="hibernate/Employee.hbm.xml"/>-->
+        <!--<mapping class="com.zihua.thibernate.one_to_one.Students"/>-->
+        <!--<mapping resource="hibernate/Boss.hbm.xml"/>-->
+        <!--<mapping class="com.zihua.thibernate.one_to_one.IDCard"/>-->
+        <!--<mapping class="com.zihua.thibernate.many_to_one.ClassRoom"/>-->
+        <!--<mapping class="com.zihua.thibernate.many_to_one.Student"/>-->
+        <mapping class="com.zihua.thibernate.one_to_many.Department"/>
+        <mapping class="com.zihua.thibernate.one_to_many.Staff"/>
     </session-factory>
 </hibernate-configuration>

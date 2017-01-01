@@ -6,8 +6,8 @@ import java.util.Date;
 
 /**
  * Created by zihua on 16-12-26.
- * 一对一双向映射关系,Students 是主控方,
- * Students 中要有 被控方的主键 @OneToOne(cascde=CascadeType.ALL)
+ * 一对一双向映射关系,Student 是主控方,
+ * Student 中要有 被控方的主键 @OneToOne(cascde=CascadeType.ALL)
  * cascde 表示级联关系
  * @JoinColumn(name="pid",unique=true)
  * IDCard 是被控方,被控方中要有 @OneToOne(mappedBy = "card")

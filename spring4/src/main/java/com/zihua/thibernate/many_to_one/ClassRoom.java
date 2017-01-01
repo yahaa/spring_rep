@@ -1,7 +1,6 @@
 package com.zihua.thibernate.many_to_one;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -12,11 +11,20 @@ public class ClassRoom {
     private int claId;
     private String claName;
 
+    public ClassRoom() {
+
+    }
+
+    public ClassRoom(String claName, int claId) {
+        this.claName = claName;
+        this.claId = claId;
+    }
+
     @Id
-    @GeneratedValue
     public int getClaId() {
         return claId;
     }
+
 
     public void setClaId(int claId) {
         this.claId = claId;

@@ -2,6 +2,10 @@ package hibenitet;
 
 import com.zihua.thibernate.bases.Boss;
 import com.zihua.thibernate.bases.Employee;
+import com.zihua.thibernate.many_to_one.ClassRoom;
+import com.zihua.thibernate.many_to_one.Student;
+import com.zihua.thibernate.one_to_many.Department;
+import com.zihua.thibernate.one_to_many.Staff;
 import com.zihua.thibernate.one_to_one.Address;
 import com.zihua.thibernate.one_to_one.IDCard;
 import com.zihua.thibernate.one_to_one.Students;
@@ -14,6 +18,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -84,7 +90,6 @@ public class Testhi {
     public void test5() {
 
 
-        //SimpleDateFormat a=new SimpleDateFormat("yyyy-mm-dd");
         IDCard idcard = new IDCard("子华", "555556666677777");
         Address address = new Address("上海大学", "校内五号楼");
         Students s = new Students(1, new Date(), "18777859598",
@@ -96,6 +101,59 @@ public class Testhi {
 
     @Test
     public void test6() {
+        ClassRoom a = new ClassRoom("上海班", 1005);
+        ClassRoom b = new ClassRoom("北大班", 1006);
+        Student s1 = new Student(1001, "子华", a);
+        Student s2 = new Student(1002, "小强", a);
+        Student s3 = new Student(1003, "小哥", b);
+        Student s4 = new Student(1004, "小狗", a);
+        s1.setRoom(a);
+        s2.setRoom(b);
+        s3.setRoom(a);
+        s4.setRoom(a);
+        session.save(a);
+        session.save(b);
+        session.save(s1);
+        session.save(s2);
+        session.save(s3);
+        session.save(s4);
+
+    }
+
+    @Test
+    public void test7() {
+        Department dp1 = new Department("黑科技部门", 1000);
+        Department dp2 = new Department("垃圾部门", 121212);
+
+
+        Set<Staff> set1 = new HashSet<Staff>();
+        Set<Staff> set2 = new HashSet<Staff>();
+
+        Staff a = new Staff("小明", "111110");
+        Staff b = new Staff("小张", "111111");
+        Staff c = new Staff("小加", "111112");
+        Staff d = new Staff("小分", "111113");
+        Staff e = new Staff("小明", "111114");
+
+        set1.add(a);
+        set1.add(b);
+        set2.add(c);
+        set2.add(d);
+        set2.add(e);
+
+        dp1.setStaffs(set1);
+
+        dp2.setStaffs(set2);
+
+        session.save(a);
+        session.save(b);
+        session.save(c);
+        session.save(d);
+        session.save(e);
+
+        session.save(dp1);
+        session.save(dp2);
+
 
     }
 
