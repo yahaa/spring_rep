@@ -1,6 +1,10 @@
 package hibenitet;
 
-import com.zihua.thibernate.*;
+import com.zihua.thibernate.bases.Boss;
+import com.zihua.thibernate.bases.Employee;
+import com.zihua.thibernate.one_to_one.Address;
+import com.zihua.thibernate.one_to_one.IDCard;
+import com.zihua.thibernate.one_to_one.Students;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -9,7 +13,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -88,6 +91,11 @@ public class Testhi {
                 "男", "cs", 10, address, idcard);
         session.save(idcard);
         session.save(s);
+
+    }
+
+    @Test
+    public void test6() {
 
     }
 

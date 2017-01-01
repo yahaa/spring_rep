@@ -25,8 +25,10 @@
 
         <!-- 3. 加载所有映射 -->
         <!--mapping resource="hibernate/Employee.hbm.xml"/-->
-        <mapping class="com.zihua.thibernate.Students"/>
+        <mapping class="com.zihua.thibernate.one_to_one.Students"/>
         <!--mapping resource="hibernate/Boss.hbm.xml"/-->
-        <mapping class="com.zihua.thibernate.IDCard"/>
+        <mapping class="com.zihua.thibernate.one_to_one.IDCard"/>
+        <mapping class="com.zihua.thibernate.many_to_one.ClassRoom"/>
+        <mapping class="com.zihua.thibernate.many_to_one.Students"/>
     </session-factory>
 </hibernate-configuration>

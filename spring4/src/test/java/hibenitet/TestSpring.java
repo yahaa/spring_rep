@@ -7,7 +7,7 @@ import com.zihua.spring_test.di.Man;
 import com.zihua.spring_test.outputImplement.Outputer;
 import com.zihua.spring_test.sayImp.Say;
 import com.zihua.spring_test.sayImp.Sayconfig;
-import com.zihua.thibernate.Boss;
+import com.zihua.thibernate.bases.Boss;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
