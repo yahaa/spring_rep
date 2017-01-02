@@ -1,12 +1,18 @@
 package com.zihua.controller;
 
+import com.google.gson.Gson;
 import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by zihua on 16-12-28.
@@ -17,16 +23,18 @@ public class AjaxService {
 
     private List<String> all = new ArrayList<String>();
 
-    @RequestMapping(value = "/more/{keyword}")
+    @RequestMapping(value = "/more")
     @ResponseBody
-    public List<String> getMore(@PathVariable(value = "keyword") String keyword) {
+    public void getMore(HttpServletRequest request, HttpServletResponse response) throws IOException {
         initAll();
-
-        ArrayList<String> result = new ArrayList<String>();
+        String keyword = request.getParameter("keyword");
+        Set<String> result = new HashSet<String>();
         for (String s : all) {
             if (s.contains(keyword)) result.add(s);
         }
-        return result;
+        Gson gson = new Gson();
+        response.getWriter().write(gson.toJson(result));
+
     }
 
 
