@@ -40,7 +40,7 @@ public class UserController {
 
             HttpSession session = request.getSession();
             session.setMaxInactiveInterval(300);
-            session.setAttribute("zihua", "zihua6666");
+            session.setAttribute("www.zihua.com", username);
             return "redirect:/home";
         } else {
 

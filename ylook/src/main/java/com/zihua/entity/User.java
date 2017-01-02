@@ -1,9 +1,6 @@
 package com.zihua.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,15 +18,16 @@ public class User {
 
     private String userName;
     private String password;
-    private boolean isAdmin;
-    private Date joinTime;
+    private boolean isAdmin = false;
+    private Date joinTime = new Date();
     private String email;
     private String sex;
     private String phone;
-//    private Set<HunterInfo>hunterInfos=new HashSet<HunterInfo>();
+    private Set<HunterInfo> hunterInfos = new HashSet<HunterInfo>();
+
 
     @Id
-    @Column(name = "username",nullable = false,unique = true,length = 32)
+    @Column(name = "username", nullable = false, unique = true, length = 32)
     public String getUserName() {
         return userName;
     }
@@ -38,7 +36,7 @@ public class User {
         this.userName = userName;
     }
 
-    @Column(name = "password",nullable = false)
+    @Column(name = "password", nullable = false)
     public String getPassword() {
         return password;
     }
@@ -46,6 +44,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 
     public boolean isAdmin() {
         return isAdmin;
@@ -55,7 +54,8 @@ public class User {
         isAdmin = admin;
     }
 
-    @Column(name = "join_time")
+    @Temporal(TemporalType.DATE)
+    @Column(name = "join_time", updatable = false, nullable = false)
     public Date getJoinTime() {
         return joinTime;
     }
@@ -63,6 +63,7 @@ public class User {
     public void setJoinTime(Date joinTime) {
         this.joinTime = joinTime;
     }
+
 
     @Column(name = "email")
     public String getEmail() {
@@ -104,11 +105,13 @@ public class User {
                 '}';
     }
 
-    //    public Set<HunterInfo> getHunterInfos() {
-//        return hunterInfos;
-//    }
-//
-//    public void setHunterInfos(Set<HunterInfo> hunterInfos) {
-//        this.hunterInfos = hunterInfos;
-//    }
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "username")
+    public Set<HunterInfo> getHunterInfos() {
+        return hunterInfos;
+    }
+
+    public void setHunterInfos(Set<HunterInfo> hunterInfos) {
+        this.hunterInfos = hunterInfos;
+    }
 }

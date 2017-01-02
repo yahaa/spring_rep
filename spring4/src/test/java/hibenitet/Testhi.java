@@ -19,6 +19,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -189,6 +190,11 @@ public class Testhi {
         session.save(d);
         session.save(e);
 
+
+    }
+
+    @Test
+    public void test9(){
 
     }
 

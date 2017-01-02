@@ -32,7 +32,9 @@
         <!--<mapping class="com.zihua.thibernate.many_to_one.Student"/>-->
         <!--<mapping class="com.zihua.thibernate.one_to_many.Department"/>-->
         <!--<mapping class="com.zihua.thibernate.one_to_many.Staff"/>-->
-        <mapping class="com.zihua.thibernate.many_to_many_o.Stud"/>
-        <mapping class="com.zihua.thibernate.many_to_many_o.Teacher"/>
+        <!--<mapping class="com.zihua.thibernate.many_to_many_o.Stud"/>-->
+        <!--<mapping class="com.zihua.thibernate.many_to_many_o.Teacher"/>-->
+        <mapping class="com.zihua.thibernate.many_to_one.HunterInfo"/>
+        <mapping class="com.zihua.thibernate.many_to_one.User"/>
     </session-factory>
 </hibernate-configuration>

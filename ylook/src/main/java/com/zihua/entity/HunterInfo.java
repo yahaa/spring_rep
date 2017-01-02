@@ -1,20 +1,36 @@
 package com.zihua.entity;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by zihua on 16-12-29.
  */
+@Entity
+@Table(name = "hunterinfo_table")
 public class HunterInfo {
+    private int deId;
     private User author;
     private String title;
     private String tpye;
     private int visits;
-    private boolean solve;
+    private boolean solve = false;
     private String details;
-    private Date published;
+    private Date published = new Date();
 
 
+    @Id
+    @GeneratedValue
+    public int getDeId() {
+        return deId;
+    }
+
+    public void setDeId(int deId) {
+        this.deId = deId;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "username")
     public User getAuthor() {
         return author;
     }
@@ -23,6 +39,7 @@ public class HunterInfo {
         this.author = author;
     }
 
+    @Column(name = "title", nullable = false)
     public String getTitle() {
         return title;
     }
@@ -55,6 +72,7 @@ public class HunterInfo {
         this.solve = solve;
     }
 
+    @Column(name = "details", nullable = false)
     public String getDetails() {
         return details;
     }
@@ -63,6 +81,8 @@ public class HunterInfo {
         this.details = details;
     }
 
+    @Temporal(TemporalType.DATE)
+    @Column(name = "pubTime", updatable = false, nullable = false)
     public Date getPublished() {
         return published;
     }
@@ -70,4 +90,6 @@ public class HunterInfo {
     public void setPublished(Date published) {
         this.published = published;
     }
+
+
 }

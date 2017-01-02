@@ -15,8 +15,7 @@ public class loginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         request.setCharacterEncoding("utf8");
         HttpSession session = request.getSession();
-
-        if (session.getAttribute("zihua") == null) {
+        if (session.getAttribute("www.zihua.com") == null) {
             response.sendRedirect("login");
             return false;
         }
