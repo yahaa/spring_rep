@@ -3,12 +3,12 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.zihua.thibernate">
-    <class name="Boss" table="boss">
+    <class name="com.zihua.thibernate.bases.Boss" table="boss">
         <id name="id"  type="int" column="id"></id>
         <property name="name" type="string" column="name"></property>
         <set name="emps">
             <key column="boss_id"></key>
-            <one-to-many class="Employee"></one-to-many>
+            <one-to-many class="com.zihua.thibernate.bases.Employee"></one-to-many>
         </set>
     </class>
 </hibernate-mapping>
