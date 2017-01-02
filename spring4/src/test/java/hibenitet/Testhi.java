@@ -2,6 +2,8 @@ package hibenitet;
 
 import com.zihua.thibernate.bases.Boss;
 import com.zihua.thibernate.bases.Employee;
+import com.zihua.thibernate.many_to_many_o.Stud;
+import com.zihua.thibernate.many_to_many_o.Teacher;
 import com.zihua.thibernate.many_to_one.ClassRoom;
 import com.zihua.thibernate.many_to_one.Student;
 import com.zihua.thibernate.one_to_many.Department;
@@ -153,6 +155,39 @@ public class Testhi {
 
         session.save(dp1);
         session.save(dp2);
+
+    }
+
+    @Test
+    public void test8(){
+
+        Set<Teacher>set1=new HashSet<Teacher>();
+        Set<Teacher>set2=new HashSet<Teacher>();
+
+        Teacher a=new Teacher(11111,"老赵");
+        Teacher b=new Teacher(11112,"老西");
+        Teacher c=new Teacher(11113,"老罗");
+        Teacher d=new Teacher(111114,"老跑");
+        Teacher e=new Teacher(111115,"哈哈");
+
+        set1.add(a);
+        set1.add(b);
+        set1.add(c);
+        set2.add(e);
+        set2.add(a);
+
+        Stud s1=new Stud(2221,"小强");
+        Stud s2=new Stud(2222,"华哥");
+        s1.setTeachers(set1);
+        s2.setTeachers(set2);
+
+        session.save(s1);
+        session.save(s2);
+        session.save(a);
+        session.save(b);
+        session.save(c);
+        session.save(d);
+        session.save(e);
 
 
     }
