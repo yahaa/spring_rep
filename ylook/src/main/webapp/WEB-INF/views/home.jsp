@@ -76,14 +76,14 @@
             <li class="devider">
             </li>
             <li>
-                <a class="login-btn" href="register">
+                <a class="login-btn" href="user/personal_center">
                     个人中心
                 </a>
             </li>
             <li class="devider">
             </li>
             <li>
-                <a class="login-btn" href="/user/logout">
+                <a class="login-btn" href="user/logout">
                     注销
                 </a>
             </li>

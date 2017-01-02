@@ -39,7 +39,7 @@ public class UserController {
         if (ok) {
 
             HttpSession session = request.getSession();
-            session.setMaxInactiveInterval(10);
+            session.setMaxInactiveInterval(300);
             session.setAttribute("zihua", "zihua6666");
             return "redirect:/home";
         } else {
@@ -54,5 +54,10 @@ public class UserController {
         HttpSession session = request.getSession();
         session.removeAttribute("zihua");
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "/personal_center")
+    public String personCenter(){
+        return "personal_center";
     }
 }
