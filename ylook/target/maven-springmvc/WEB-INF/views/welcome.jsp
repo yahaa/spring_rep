@@ -83,7 +83,7 @@
             <li class="devider">
             </li>
             <li>
-                <a class="login-btn" href="login.jsp">
+                <a class="login-btn" href="login.html">
                     帮助？
                 </a>
             </li>
