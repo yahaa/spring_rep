@@ -40,7 +40,7 @@ public class UserController {
 
             HttpSession session = request.getSession();
             session.setMaxInactiveInterval(300);
-            session.setAttribute("www.zihua.com", username);
+            session.setAttribute("www.zihua.com", userService.getUserByName(username));
             return "redirect:/home";
         } else {
 
@@ -52,7 +52,7 @@ public class UserController {
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        session.removeAttribute("zihua");
+        session.removeAttribute("www.zihua.com");
         return "redirect:/";
     }
 

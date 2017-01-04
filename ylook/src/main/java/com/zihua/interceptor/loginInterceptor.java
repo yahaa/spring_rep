@@ -1,5 +1,7 @@
 package com.zihua.interceptor;
 
+import com.zihua.entity.User;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,10 +17,15 @@ public class loginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         request.setCharacterEncoding("utf8");
         HttpSession session = request.getSession();
+
+
+        User a= (User) session.getAttribute("www.zihua.com");
         if (session.getAttribute("www.zihua.com") == null) {
             response.sendRedirect("login");
             return false;
         }
+        System.out.println(a);
+        System.out.println(session.getId());
         return true;
     }
 
