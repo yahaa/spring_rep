@@ -19,6 +19,16 @@ public class HunterInfo implements Serializable {
     private String details;
     private Date published = new Date();
 
+    public HunterInfo(){
+
+    }
+
+    public HunterInfo(int deId,String title,String details){
+        this.deId=deId;
+        this.title=title;
+        this.details=details;
+    }
+
     public void setPublished(Date published) {
         this.published = published;
     }
@@ -34,7 +44,8 @@ public class HunterInfo implements Serializable {
     }
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "username",referencedColumnName = "username")
+
     public User getAuthor() {
         return author;
     }
@@ -91,5 +102,48 @@ public class HunterInfo implements Serializable {
         return published;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        HunterInfo that = (HunterInfo) o;
+
+        if (deId != that.deId) return false;
+        if (visits != that.visits) return false;
+        if (solve != that.solve) return false;
+        if (author != null ? !author.equals(that.author) : that.author != null) return false;
+        if (title != null ? !title.equals(that.title) : that.title != null) return false;
+        if (tpye != null ? !tpye.equals(that.tpye) : that.tpye != null) return false;
+        if (details != null ? !details.equals(that.details) : that.details != null) return false;
+        return published != null ? published.equals(that.published) : that.published == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = deId;
+        result = 31 * result + (author != null ? author.hashCode() : 0);
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (tpye != null ? tpye.hashCode() : 0);
+        result = 31 * result + visits;
+        result = 31 * result + (solve ? 1 : 0);
+        result = 31 * result + (details != null ? details.hashCode() : 0);
+        result = 31 * result + (published != null ? published.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "HunterInfo{" +
+                "deId=" + deId +
+                ", author=" + author +
+                ", title='" + title + '\'' +
+                ", tpye='" + tpye + '\'' +
+                ", visits=" + visits +
+                ", solve=" + solve +
+                ", details='" + details + '\'' +
+                ", published=" + published +
+                '}';
+    }
 }
