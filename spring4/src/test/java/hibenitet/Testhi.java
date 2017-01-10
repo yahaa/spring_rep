@@ -1,7 +1,14 @@
 package hibenitet;
 
+<<<<<<< HEAD
 import com.google.gson.Gson;
 import com.google.gson.internal.LazilyParsedNumber;
+=======
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+>>>>>>> 69b8a043109f2c786b72e10619931d1232beb5d7
 import com.zihua.thibernate.bases.Boss;
 import com.zihua.thibernate.bases.Employee;
 import com.zihua.thibernate.many_to_many_o.Stud;
@@ -23,8 +30,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+<<<<<<< HEAD
 import javax.jws.soap.SOAPBinding;
 import javax.persistence.Table;
+=======
+
+import java.util.Collection;
+>>>>>>> 69b8a043109f2c786b72e10619931d1232beb5d7
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -200,6 +212,7 @@ public class Testhi {
 
     @Test
     public void test9() {
+<<<<<<< HEAD
         User a = new User("子da", "666");
         session.save(a);
 
@@ -221,7 +234,43 @@ public class Testhi {
         User a = (User) session.createQuery("from User where userName = ?").setParameter(0, "子华").uniqueResult();
         Gson gson = new Gson();
         System.out.println(gson.toJson(a));
+=======
+        User a = new User("子华", "444444");
+        session.save(a);
 
+>>>>>>> 69b8a043109f2c786b72e10619931d1232beb5d7
+
+    }
+
+    @Test
+    public void test10() {
+        User a = (User) session.createQuery("from User where userName = ?")
+                .setParameter(0, "子华").uniqueResult();
+        GsonBuilder gson = new GsonBuilder().setExclusionStrategies(new ExclusionStrategy() {
+            @Override
+            public boolean shouldSkipField(FieldAttributes fieldAttributes) {
+                if (fieldAttributes.getName() == "author") return true;
+                return false;
+            }
+
+            @Override
+            public boolean shouldSkipClass(Class<?> aClass) {
+                return false;
+            }
+        });
+        gson.setPrettyPrinting();
+        System.out.println(gson.create().toJson(a));
+
+
+    }
+
+    @Test
+    public void test11() {
+        User a = (User) session.createQuery("from User where userName = ?")
+                .setParameter(0, "子华").uniqueResult();
+        HunterInfo info = new HunterInfo(1, "老师", "中国好人通知同志你好");
+        info.setAuthor(a);
+        session.save(info);
     }
 
 }
