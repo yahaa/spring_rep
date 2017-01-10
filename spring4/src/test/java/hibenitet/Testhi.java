@@ -1,11 +1,15 @@
 package hibenitet;
 
+import com.google.gson.Gson;
+import com.google.gson.internal.LazilyParsedNumber;
 import com.zihua.thibernate.bases.Boss;
 import com.zihua.thibernate.bases.Employee;
 import com.zihua.thibernate.many_to_many_o.Stud;
 import com.zihua.thibernate.many_to_many_o.Teacher;
 import com.zihua.thibernate.many_to_one.ClassRoom;
+import com.zihua.thibernate.many_to_one.HunterInfo;
 import com.zihua.thibernate.many_to_one.Student;
+import com.zihua.thibernate.many_to_one.User;
 import com.zihua.thibernate.one_to_many.Department;
 import com.zihua.thibernate.one_to_many.Staff;
 import com.zihua.thibernate.one_to_one.Address;
@@ -19,6 +23,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.Table;
 import java.util.Date;
 import java.util.HashSet;
@@ -160,16 +165,16 @@ public class Testhi {
     }
 
     @Test
-    public void test8(){
+    public void test8() {
 
-        Set<Teacher>set1=new HashSet<Teacher>();
-        Set<Teacher>set2=new HashSet<Teacher>();
+        Set<Teacher> set1 = new HashSet<Teacher>();
+        Set<Teacher> set2 = new HashSet<Teacher>();
 
-        Teacher a=new Teacher(11111,"老赵");
-        Teacher b=new Teacher(11112,"老西");
-        Teacher c=new Teacher(11113,"老罗");
-        Teacher d=new Teacher(111114,"老跑");
-        Teacher e=new Teacher(111115,"哈哈");
+        Teacher a = new Teacher(11111, "老赵");
+        Teacher b = new Teacher(11112, "老西");
+        Teacher c = new Teacher(11113, "老罗");
+        Teacher d = new Teacher(111114, "老跑");
+        Teacher e = new Teacher(111115, "哈哈");
 
         set1.add(a);
         set1.add(b);
@@ -177,8 +182,8 @@ public class Testhi {
         set2.add(e);
         set2.add(a);
 
-        Stud s1=new Stud(2221,"小强");
-        Stud s2=new Stud(2222,"华哥");
+        Stud s1 = new Stud(2221, "小强");
+        Stud s2 = new Stud(2222, "华哥");
         s1.setTeachers(set1);
         s2.setTeachers(set2);
 
@@ -194,7 +199,28 @@ public class Testhi {
     }
 
     @Test
-    public void test9(){
+    public void test9() {
+        User a = new User("子da", "666");
+        session.save(a);
+
+    }
+
+    @Test
+    public void test10() {
+        User a = (User) session.createQuery("from User where userName = ?").setParameter(0, "子华").uniqueResult();
+        HunterInfo list = new HunterInfo(1, "我是好人", "ttt");
+        HunterInfo list2 = new HunterInfo(2, "卧槽奥圣诞节佛阿数据的反馈链接撒旦啊时间的康复拉数据反馈的垃圾收到", "jjj");
+        list2.setAuthor(a);
+        list.setAuthor(a);
+        session.save(list);
+        session.save(list2);
+    }
+
+    @Test
+    public void test11() {
+        User a = (User) session.createQuery("from User where userName = ?").setParameter(0, "子华").uniqueResult();
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(a));
 
     }
 

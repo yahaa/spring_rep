@@ -19,15 +19,25 @@ public class User {
     private String userName;
     private String password;
     private boolean isAdmin = false;
-    private Date joinTime = new Date();
+    //private Date joinTime = new Date();
     private String email;
     private String sex;
     private String phone;
     private Set<HunterInfo> hunterInfos = new HashSet<HunterInfo>();
 
-    public void setJoinTime(Date joinTime) {
-        this.joinTime = joinTime;
+    public  User(){
+
     }
+
+    public User(String name,String password){
+        userName=name;
+        this.password=password;
+
+    }
+
+//    public void setJoinTime(Date joinTime) {
+//        this.joinTime = joinTime;
+//    }
 
     @Id
     @Column(name = "username", nullable = false, unique = true, length = 32)
@@ -57,11 +67,11 @@ public class User {
         isAdmin = admin;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "join_time", updatable = false, nullable = false)
-    public Date getJoinTime() {
-        return joinTime;
-    }
+//    @Temporal(TemporalType.DATE)
+//    @Column(name = "join_time", updatable = false, nullable = false)
+//    public Date getJoinTime() {
+//        return joinTime;
+//    }
 
 
     @Column(name = "email")
@@ -97,7 +107,6 @@ public class User {
                 "userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", isAdmin=" + isAdmin +
-                ", joinTime=" + joinTime +
                 ", email='" + email + '\'' +
                 ", sex='" + sex + '\'' +
                 ", phone='" + phone + '\'' +
@@ -112,5 +121,9 @@ public class User {
 
     public void setHunterInfos(Set<HunterInfo> hunterInfos) {
         this.hunterInfos = hunterInfos;
+    }
+
+    public void addArtical(HunterInfo hunterInfo){
+        this.hunterInfos.add(hunterInfo);
     }
 }

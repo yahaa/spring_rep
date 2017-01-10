@@ -17,11 +17,21 @@ public class HunterInfo implements Serializable {
     private int visits;
     private boolean solve = false;
     private String details;
-    private Date published = new Date();
+    //private Date published = new Date();
 
-    public void setPublished(Date published) {
-        this.published = published;
+    public HunterInfo() {
+
     }
+
+    public HunterInfo(int id, String details,String title) {
+        this.deId = id;
+        this.details = details;
+        this.title=title;
+    }
+
+//    public void setPublished(Date published) {
+//        this.published = published;
+//    }
 
     @Id
     @GeneratedValue
@@ -85,11 +95,23 @@ public class HunterInfo implements Serializable {
         this.details = details;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "pubTime", updatable = false, nullable = false)
-    public Date getPublished() {
-        return published;
+//    @Temporal(TemporalType.DATE)
+//    @Column(name = "pubTime", updatable = false, nullable = false)
+//    public Date getPublished() {
+//        return published;
+//    }
+
+
+    @Override
+    public String toString() {
+        return "HunterInfo{" +
+                "deId=" + deId +
+                ", author=" + author +
+                ", title='" + title + '\'' +
+                ", tpye='" + tpye + '\'' +
+                ", visits=" + visits +
+                ", solve=" + solve +
+                ", details='" + details + '\'' +
+                '}';
     }
-
-
 }
